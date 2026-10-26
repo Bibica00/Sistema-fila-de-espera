@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel · GABZ00</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="tv-body" data-pagina="painel">
+
+<header class="tv-header">
+    <h1>GABZ00.</h1>
+    <div class="sub">Aguarde ser chamado pelo painel</div>
+</header>
+
+<div class="tv-grid">
+
+    <div class="tv-principal">
+
+        <div class="tv-card-grande" id="tv-principal">
+            <div class="setor" id="tv-setor-atual">AGUARDANDO</div>
+            <div class="numero" id="tv-numero-atual">00</div>
+            <div class="nome" id="tv-nome-atual">---</div>
+            <div class="turma" id="tv-turma-atual">---</div>
+        </div>
+
+        <div class="tv-menores">
+            <div class="tv-card-medio" id="tv-medio-1">
+                <div class="setor">---</div>
+                <div class="numero">--</div>
+            </div>
+            <div class="tv-card-medio" id="tv-medio-2">
+                <div class="setor">---</div>
+                <div class="numero">--</div>
+            </div>
+        </div>
+
+    </div>
+
+    <aside class="tv-lateral">
+        <h3>Últimos Chamados</h3>
+        <div id="tv-ultimos"></div>
+    </aside>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

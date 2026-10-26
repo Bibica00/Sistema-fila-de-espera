@@ -1,0 +1,72 @@
+# ============================================
+# Dados reais (NUNCA subir para o GitHub)
+# ============================================
+fila.json
+historico.json
+fila-backup.json
+historico-backup.json
+turmas_map.json
+*.backup.json
+
+# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ============================================
+# Ambientes virtuais
+# ============================================
+venv/
+env/
+ENV/
+.venv/
+.venv*/
+pip-log.txt
+
+# ============================================
+# Banco de dados / arquivos locais
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# ============================================
+# Variáveis de ambiente
+# ============================================
+.env
+.env.*
+!.env.example
+
+# ============================================
+# IDE / Editor
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================
+# Sistema Operacional
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Flask
+# ============================================
+instance/
+.flaskenv

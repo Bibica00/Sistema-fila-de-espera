@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Codes · Grau</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">grau<span>.</span></div>
+    <nav class="nav">
+        <a href="/">Início</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/painel">Painel TV</a>
+    </nav>
+</header>
+
+<main class="page">
+
+    <h1 class="page-title">QR Codes por Setor</h1>
+    <p class="page-sub">Imprima e deixe disponível para os alunos escanearem</p>
+
+    <div class="qr-grid">
+
+        {% for setor in setores %}
+        <div class="qr-card">
+            <h3>{{ nomes[setor] }}</h3>
+            <img src="/qrcode/{{ setor }}" alt="QR {{ nomes[setor] }}">
+            <div class="link" id="link-{{ setor }}"></div>
+            <button class="btn-primario" onclick="imprimir('{{ setor }}')" style="margin-top:14px;">
+                Imprimir
+            </button>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</main>
+
+<script>
+    const links = {};
+    {% for setor in setores %}
+    links["{{ setor }}"] = window.location.origin + "/formulario/{{ setor }}";
+    {% endfor %}
+
+    for (const s in links) {
+        document.getElementById("link-" + s).innerText = links[s];
+    }
+
+    function imprimir(setor) {
+        const url = links[setor];
+        const w = window.open("");
+        w.document.write(`
+            <html>
+            <head>
+                <title>QR - ${setor}</title>
+                <style>
+                    body { font-family: sans-serif; text-align:center; padding:40px; }
+                    img { width: 340px; height: 340px; }
+                    h1 { margin-bottom: 4px; text-transform: capitalize; }
+                    p { color:#555; font-size: 13px; margin-top: 20px; }
+                </style>
+            </head>
+            <body>
+                <h1>${setor}</h1>
+                <img src="${window.location.origin}/qrcode/${setor}">
+                <p>${url}</p>
+            </body>
+            </html>
+        `);
+        w.document.close();
+        setTimeout(() => w.print(), 400);
+    }
+</script>
+
+</body>
+</html>

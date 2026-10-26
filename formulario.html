@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ nome_setor }} · GABZ00</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-pagina="formulario" data-setor="{{ setor }}">
+
+<div class="form-page"> 
+
+    <!-- FORMULÁRIO -->
+    <div class="form-card" id="etapa-form">
+        <div class="setor-nome">{{ nome_setor }}</div>
+        <div class="setor-sub">Preencha para entrar na fila</div>
+
+        <input id="nome" placeholder="Nome completo" autocomplete="off">
+        <input id="turma" placeholder="Turma" autocomplete="off">
+
+        <button class="btn-primario" onclick="enviar()">Entrar na fila</button>
+    </div>
+
+    <!-- SENHA -->
+    <div class="senha-card" id="etapa-senha" style="display:none;">
+        <div class="senha-circulo" id="circulo">
+            <div class="label">SENHA</div>
+            <div class="numero" id="numeroSenha">00</div>
+        </div>
+
+        <div class="senha-info">{{ nome_setor }}</div>
+        <div class="senha-info" id="posicao">Calculando...</div>
+
+        <div class="senha-aviso" id="aviso"></div>
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · GABZ00</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-pagina="dashboard">
+
+<header class="header">
+    <div class="logo">GABZ00<span>.</span></div>
+    <nav class="nav">
+        <a href="/">Início</a>
+        <a href="/painel">Painel TV</a>
+        <a href="/relatorio">Relatório</a>
+    </nav>
+</header>
+
+<main class="page">
+
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-sub">Visão geral do movimento de atendimentos</p>
+
+    <div class="filtro-mes">
+        <label for="filtro-mes">Filtrar por mês:</label>
+        <input type="month" id="filtro-mes">
+        <button class="btn-primario" onclick="aplicarFiltro()">Aplicar</button>
+        <button class="btn-outline" onclick="limparFiltro()">Limpar</button>
+    </div>
+
+    <div class="dash-cards">
+        <div class="dash-card">
+            <div class="label">Total de Atendimentos</div>
+            <div class="valor" id="dash-total">0</div>
+        </div>
+        <div class="dash-card amarelo">
+            <div class="label">Setor Mais Procurado</div>
+            <div class="valor" id="dash-setor-top" style="font-size:22px;">---</div>
+        </div>
+        <div class="dash-card escuro">
+            <div class="label">Horário de Pico</div>
+            <div class="valor" id="dash-hora-top" style="font-size:22px;">--:00</div>
+        </div>
+        <div class="dash-card">
+            <div class="label">Dia Mais Movimentado</div>
+            <div class="valor" id="dash-dia-top" style="font-size:22px;">---</div>
+        </div>
+    </div>
+
+    <div class="dash-painel" style="margin-bottom:20px;">
+        <h3>Comparativo Mensal de Atendimentos</h3>
+        <canvas id="grafico-meses" height="90"></canvas>
+    </div>
+
+    <div class="dash-grid">
+
+        <div class="dash-painel">
+            <h3>Atendimentos por Setor</h3>
+            <canvas id="grafico-setor" height="200"></canvas>
+        </div>
+
+        <div class="dash-painel">
+            <h3>Atendimentos por Hora</h3>
+            <canvas id="grafico-hora" height="200"></canvas>
+        </div>
+
+        <div class="dash-painel" style="grid-column: 1 / -1;">
+            <h3>Atendimentos por Dia</h3>
+            <canvas id="grafico-dia" height="100"></canvas>
+        </div>
+
+    </div>
+
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

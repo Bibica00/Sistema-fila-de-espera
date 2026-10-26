@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ nome_setor }} · Atendimento</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-pagina="atendente" data-setor="{{ setor }}">
+
+<header class="atendente-header">
+    <div class="setor">{{ nome_setor }}</div>
+    <div class="acoes-topo">
+        <button class="btn-amarelo" onclick="abrirManual()">+ Adicionar Manual</button>
+        <a class="btn-voltar" href="/" title="Voltar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5"/>
+                <path d="M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<main class="colunas">
+
+    <section class="coluna">
+        <h2>Chamar Próximo</h2>
+        <div class="lista" id="lista-espera"></div>
+    </section>
+
+    <section class="coluna">
+        <h2>Chamar Novamente</h2>
+        <div class="lista" id="lista-repetir"></div>
+    </section>
+
+    <section class="coluna">
+        <h2>Finalizados</h2>
+        <div class="lista" id="lista-finalizados"></div>
+    </section>
+
+</main>
+
+<div id="modal-manual" class="modal-bg" style="display:none;">
+    <div class="modal-card">
+        <h3>Adicionar Manualmente</h3>
+        <input id="manual-nome" placeholder="Nome completo" autocomplete="off">
+        <input id="manual-turma" placeholder="Turma" autocomplete="off">
+        <div class="modal-botoes">
+            <button class="btn-outline" onclick="fecharManual()">Cancelar</button>
+            <button class="btn-primario" onclick="confirmarManual()">Adicionar</button>
+        </div>
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório · Grau</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-pagina="relatorio">
+
+<header class="header">
+    <div class="logo">grau<span>.</span></div>
+    <nav class="nav">
+        <a href="/">Início</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/painel">Painel TV</a>
+        <a href="/qr">QR Codes</a>
+    </nav>
+</header>
+
+<main class="page">
+
+    <h1 class="page-title">Relatório de Atendimentos</h1>
+    <p class="page-sub">Configure os filtros e gere o relatório consolidado</p>
+
+    <div class="filtro-relatorio">
+        <div class="campo">
+            <label>Data inicial</label>
+            <input type="date" id="data-ini">
+        </div>
+        <div class="campo">
+            <label>Data final</label>
+            <input type="date" id="data-fim">
+        </div>
+        <div class="campo">
+            <label>Agrupar por</label>
+            <select id="agrupar">
+                <option value="setor">Setor</option>
+                <option value="dia">Dia</option>
+                <option value="mes">Mês</option>
+                <option value="hora">Hora</option>
+                <option value="turma">Turma</option>
+                <option value="todos">Todos</option>
+            </select>
+        </div>
+        <div class="campo-acoes">
+            <button class="btn-primario" onclick="gerarRelatorio()">Gerar Relatório</button>
+            <button class="btn-outline" onclick="limparRelatorio()">Limpar</button>
+            <button class="btn-amarelo" onclick="imprimirRelatorio()">Imprimir</button>
+        </div>
+    </div>
+
+    <div id="rel-resultado" style="display:none;">
+
+        <div class="rel-cards">
+            <div class="dash-card">
+                <div class="label">Total no Período</div>
+                <div class="valor" id="rel-total">0</div>
+            </div>
+            <div class="dash-card amarelo">
+                <div class="label">Horário de Pico</div>
+                <div class="valor" id="rel-pico" style="font-size:22px;">--:00</div>
+            </div>
+            <div class="dash-card escuro">
+                <div class="label">Período</div>
+                <div class="valor" id="rel-periodo" style="font-size:18px;">—</div>
+            </div>
+        </div>
+
+        <div class="rel-grid">
+
+            <div class="dash-painel rel-painel-tabela">
+                <h3 id="rel-titulo-tabela">Consolidado</h3>
+                <div style="overflow-x:auto;">
+                    <table class="dash-tabela" id="rel-tabela">
+                        <thead id="rel-thead">
+                            <tr>
+                                <th id="rel-col-chave">Item</th>
+                                <th>Atendimentos</th>
+                                <th>% do Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rel-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="dash-painel rel-painel-grafico">
+                <h3>Atendimentos por Setor</h3>
+                <div class="rel-grafico-wrap">
+                    <canvas id="rel-grafico-setor"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="rel-vazio" class="dash-painel" style="text-align:center; padding:60px; color:#888;">
+        Configure os filtros acima e clique em <strong>Gerar Relatório</strong>.
+    </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/script.js"></script>
+</body>
+</html>
